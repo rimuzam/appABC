@@ -50,7 +50,36 @@ where b.user_id = $P{userId} and isConfirmed = true and (MONTH(b.dateOrder) = $P
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="102" splitType="Stretch"/>
+		<band height="102" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="-21" y="-25" width="845" height="104" backcolor="#006699" uuid="e5fb86e9-92dd-41b1-bdfa-1e0e598b65e7"/>
+				<staticText>
+					<reportElement x="265" y="38" width="350" height="33" forecolor="#FFFFFF" uuid="37798dae-46ad-42c7-9373-2fba1c47538e"/>
+					<textElement textAlignment="Center">
+						<font fontName="Georgia" size="24" isBold="true"/>
+					</textElement>
+					<text><![CDATA[LAPORAN TRANSAKSI]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="33" y="12" width="81" height="20" forecolor="#FFFFFF" uuid="3700286a-f265-4340-bf1a-27b10c38710e"/>
+					<textElement textAlignment="Left">
+						<font fontName="Georgia" size="10" isBold="false"/>
+					</textElement>
+					<text><![CDATA[PT ABC SPORT]]></text>
+				</staticText>
+				<image>
+					<reportElement x="-16" y="-10" width="62" height="81" uuid="ea4f1e95-17fe-4b86-af70-839a98129295"/>
+					<imageExpression><![CDATA["C:\\Users\\Rimuza\\Documents\\NetBeansProjects\\VenueBookingApp-JavaSwing\\src\\main\\resources\\Images\\Sport_Center_ABC-removebg-preview.png"]]></imageExpression>
+				</image>
+				<staticText>
+					<reportElement x="34" y="24" width="76" height="13" forecolor="#FFFFFF" uuid="c9cda0ba-dc3f-4ff9-82ab-10f84e3c8ec8"/>
+					<textElement>
+						<font fontName="Georgia"/>
+					</textElement>
+					<text><![CDATA[Jakarta Selatan ]]></text>
+				</staticText>
+			</frame>
+		</band>
 	</title>
 	<pageHeader>
 		<band splitType="Stretch"/>
@@ -179,17 +208,16 @@ where b.user_id = $P{userId} and isConfirmed = true and (MONTH(b.dateOrder) = $P
 		</band>
 	</detail>
 	<columnFooter>
-		<band height="7" splitType="Stretch">
-			<line>
-				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="848dcad5-6a83-478b-b855-4d47503a1cdc"/>
-				<graphicElement>
-					<pen lineWidth="0.5" lineColor="#999999"/>
-				</graphicElement>
-			</line>
-		</band>
+		<band height="7" splitType="Stretch"/>
 	</columnFooter>
 	<pageFooter>
-		<band height="384" splitType="Stretch"/>
+		<band height="384" splitType="Stretch">
+			<textField>
+				<reportElement mode="Opaque" x="0" y="371" width="802" height="13" backcolor="#E6E6E6" uuid="59f25229-4570-4650-90ce-91f716193d03"/>
+				<textElement textAlignment="Left"/>
+				<textFieldExpression><![CDATA["Hal "+$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
 	</pageFooter>
 	<summary>
 		<band splitType="Stretch"/>
