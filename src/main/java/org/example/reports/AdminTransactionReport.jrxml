@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="7b8205f3-39e8-4fdb-88ca-1f565c53ca28">
+	<property name="ireport.zoom" value="0.75"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#CCCCCC" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
+	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true" pdfFontName="Times-Roman"/>
+	<style name="Detail" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman"/>
+	<style name="Row" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style mode="Opaque" backcolor="#F0EFEF"/>
+		</conditionalStyle>
+	</style>
+	<parameter name="month" class="java.lang.String"/>
+	<parameter name="year" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[select b.id, v.name, v.id as venue_id, c.name as category, u.email, b.dateOrder, b.dateBooked, b.start_time, b.end_time, u.phoneNumber, b.isConfirmed, b.price 
+from booking b 
+join user u on b.user_id = u.id 
+join venue v on b.venue_id = v.id
+join category c on v.category_id = c.id
+where (MONTH(b.dateOrder) = $P{month}) and (Year(b.dateOrder) = $P{year})]]>
+	</queryString>
+	<field name="id" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="name" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="venue_id" class="java.lang.String"/>
+	<field name="category" class="java.lang.String"/>
+	<field name="email" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="dateOrder" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="dateBooked" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="start_time" class="java.sql.Time">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="end_time" class="java.sql.Time">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="phoneNumber" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="isConfirmed" class="java.lang.Boolean">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="price" class="java.lang.Long">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="102" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="-22" width="843" height="124" backcolor="#006699" uuid="2a1e9fa5-77c1-4f0a-8cb1-dbbe0b971a43"/>
+				<staticText>
+					<reportElement x="263" y="48" width="350" height="33" forecolor="#FFFFFF" uuid="e97801a4-cb64-4b5d-919c-3c85d92b9fbe"/>
+					<textElement textAlignment="Center">
+						<font fontName="Georgia" size="24" isBold="true"/>
+					</textElement>
+					<text><![CDATA[LAPORAN PEMESANAN]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="33" y="12" width="81" height="20" forecolor="#FFFFFF" uuid="3e3713a2-105f-4598-90fb-1d55c8a52425"/>
+					<textElement textAlignment="Left">
+						<font fontName="Georgia" size="10" isBold="false"/>
+					</textElement>
+					<text><![CDATA[PT ABC SPORT]]></text>
+				</staticText>
+				<image>
+					<reportElement x="-16" y="-10" width="62" height="81" uuid="3334188a-a285-42ae-8008-b8a88675226e"/>
+					<imageExpression><![CDATA["C:\\Users\\Rimuza\\Documents\\NetBeansProjects\\VenueBookingApp-JavaSwing\\src\\main\\resources\\Images\\Sport_Center_ABC-removebg-preview.png"]]></imageExpression>
+				</image>
+				<staticText>
+					<reportElement x="34" y="24" width="76" height="13" forecolor="#FFFFFF" uuid="591e6561-8145-4bb6-8ba2-7de01ea5bdde"/>
+					<textElement>
+						<font fontName="Georgia"/>
+					</textElement>
+					<text><![CDATA[Jakarta Selatan ]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="18" splitType="Stretch">
+			<staticText>
+				<reportElement style="Column header" x="0" y="0" width="88" height="18" forecolor="#000000" uuid="4b29e8b3-f616-49d3-8d7b-c8c17cdf8176"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Kode Pesanan]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="98" y="0" width="90" height="18" forecolor="#000000" uuid="04e78d60-61ee-4e14-9462-7c74e93dbaa9"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Lapangan]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="188" y="0" width="86" height="18" forecolor="#000000" uuid="17952e2d-6b62-40d5-9bae-9bfba83c4a84"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Id Lapangan]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="282" y="0" width="88" height="18" forecolor="#000000" uuid="adf5efab-6af3-4da4-8d10-8b9d2906a2f7"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Email]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="387" y="0" width="88" height="18" forecolor="#000000" uuid="e08c75f6-fc09-4a64-a011-f242749c2025"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[No Ponsel]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="490" y="0" width="103" height="18" forecolor="#000000" uuid="064c3354-fb15-4051-8bb7-f6ec58ff7d4b"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tgl Pemesanan]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="593" y="0" width="58" height="18" forecolor="#000000" uuid="91e7acc2-95c2-4858-acba-8984e1b6d7e6"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Mulai]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="651" y="0" width="63" height="18" forecolor="#000000" uuid="9872ef43-8455-4744-8ed0-141a6164d038"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Berakhir]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="714" y="0" width="88" height="18" forecolor="#000000" uuid="d37082fe-cea9-42fa-8c37-3b57f32a9cd6"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="18" splitType="Stretch">
+			<frame>
+				<reportElement style="Row" mode="Opaque" x="0" y="0" width="797" height="18" uuid="a8dcc999-b183-40a4-82fe-7d5c03276010"/>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="0" y="0" width="88" height="18" uuid="d484806e-66d4-47e3-893d-eb91bd163248"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="98" y="0" width="78" height="18" uuid="06a5ebe1-ed9b-486f-880e-e32fc4b1aae2"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="188" y="0" width="86" height="18" uuid="90162ca5-2398-4a8e-a525-b81f241aa85d"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{venue_id}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="282" y="0" width="88" height="18" uuid="ca4a09e2-66c7-4475-b63f-d1a40ded9b11"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{email}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="387" y="0" width="88" height="18" uuid="09ae6aa5-724f-49b3-9d42-705e0ce82d64"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{phoneNumber}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" pattern="dd MMMMM yyyy">
+					<reportElement style="Detail" positionType="Float" x="490" y="0" width="103" height="18" uuid="aeff320e-760c-413b-81c3-c73dbb57adda"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{dateBooked}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" pattern="HH.mm">
+					<reportElement style="Detail" positionType="Float" x="593" y="0" width="58" height="18" uuid="87660d80-fd63-4442-84e0-998ed06fa94a"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{start_time}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" pattern="HH.mm">
+					<reportElement style="Detail" positionType="Float" x="651" y="0" width="63" height="18" uuid="3a7cc8ec-2b42-4492-9e2e-5b3d93d32ed9"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{end_time}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" pattern="¤ #,##0.00">
+					<reportElement style="Detail" positionType="Float" x="714" y="0" width="83" height="18" uuid="12c86529-0d10-44e7-95f8-718e71559855"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{price}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="24" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="187" splitType="Stretch">
+			<textField>
+				<reportElement mode="Opaque" x="0" y="174" width="802" height="13" backcolor="#E6E6E6" uuid="45ebe1c6-dd0b-43d5-a6a1-5395f401e2f4"/>
+				<textElement textAlignment="Left"/>
+				<textFieldExpression><![CDATA["Hal "+$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="716" y="74" width="63" height="13" uuid="406909e6-1580-4bf0-8776-c6c3d170a639"/>
+				<textElement>
+					<font fontName="Georgia" isStrikeThrough="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="622" y="152" width="176" height="13" uuid="e36e3694-7129-4ad9-9bde-325d7c515d37"/>
+				<textElement markup="none"/>
+				<text><![CDATA[(.....................................................)	]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="640" y="74" width="82" height="13" forecolor="#000000" backcolor="#000000" uuid="3d9fecfb-65bb-4f7e-bad1-aeb52597095a"/>
+				<textElement>
+					<font fontName="Georgia"/>
+				</textElement>
+				<text><![CDATA[Jakarta Selatan , ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="671" y="61" width="65" height="13" uuid="a4dc2933-bddd-4813-8cce-a724b65ea077"/>
+				<textElement>
+					<font fontName="Georgia"/>
+				</textElement>
+				<text><![CDATA[Mengetahui , ]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

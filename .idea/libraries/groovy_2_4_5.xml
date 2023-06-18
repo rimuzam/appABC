@@ -1,0 +1,15 @@
+<component name="libraryTable">
+  <library name="groovy-2.4.5">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../../Plugin-Libraries/priint library/groovy-2.4.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../Plugin-Libraries/priint library/commons-collections-3.2.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../Plugin-Libraries/priint library/commons-logging-1.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../Plugin-Libraries/priint library/commons-digester-2.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../Plugin-Libraries/priint library/itextpdf-5.5.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../Plugin-Libraries/priint library/itext-pdfa-5.5.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../Plugin-Libraries/priint library/jasperreports-6.0.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
